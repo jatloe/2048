@@ -153,7 +153,7 @@ GameManager.prototype.move = function (direction) {
         var next      = self.grid.cellContent(positions.next);
 
         // Only one merger per row traversal?
-        if (next && ((next.value === tile.value/2 || next.value === tile.value*2) || (next.value === 2 || tile.value === 2)) && !next.mergedFrom) {
+        if (next && ((next.value === tile.value/2 || next.value === tile.value*2) || (next.value === 2 && tile.value === 2)) && !next.mergedFrom) {
           var nextvalue=4;
           if (!(tile.value === next.value)) {
             nextvalue=(tile.value + next.value)/3*4;
@@ -260,7 +260,7 @@ GameManager.prototype.tileMatchesAvailable = function () {
 
           var other  = self.grid.cellContent(cell);
 
-          if (other && ((other.value === tile.value/2 || other.value === tile.value*2) || (other.value === 2 || tile.value === 2))) {
+          if (other && ((other.value === tile.value/2 || other.value === tile.value*2) || (other.value === 2 && tile.value === 2))) {
             return true; // These two tiles can be merged
           }
         }
